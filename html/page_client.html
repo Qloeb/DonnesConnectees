@@ -2,6 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
+        <link rel="shortcut icon" href="#">
 		<title> Titre </title>
 		<script>
 			
@@ -9,16 +10,16 @@
 				var body = {"URI":document.getElementById('IdURI').value, 
 							"Commentaire":document.getElementById('IdCommentaire').value};
 				// console.log(body); 
-				// var route = "http://localhost:3000/annotation";
+				//var route = "http://localhost:3000/annotation";
 				var route = "/annotation";
 				fetch(route, {    method:'POST', 
-								  body: JSON.stringify(body) ,
-								  headers:{'Content-Type': 'application/json'}
+								  body: JSON.stringify(body),
+								  headers:{'Content-Type': 'application/json'},
 								  //mode:"cors", 
 							}).then(
 					function(res){ 
 						window.location.reload();
-						// console.log(body); 
+						console.log(body); 
 					});
 			}
 		
