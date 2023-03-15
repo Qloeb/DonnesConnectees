@@ -7,7 +7,7 @@
 		<script>
 			
 			function envoi(){
-				var body = {"URI":document.getElementById('IdURI').value, 
+				var body = {"URI":document.getElementById('URI').value, 
 							"Commentaire":document.getElementById('IdCommentaire').value};
 
 				var route = "/annotation";
@@ -25,6 +25,17 @@
 				var route = "/recup_annotations"
 				fetch(route, {	method: 'GET',});
 			};
+
+			function recup_annotations_uri(){
+				
+				var uri = document.getElementById('IdURI_get_all').value;
+
+				var route = "/recup_annotations_uri?uri="+uri.toString();
+				console.log(route);
+				
+				fetch(route, {method:'GET'})
+			};
+
 		
 		</script>
 	</head>
@@ -34,7 +45,7 @@
 		<form autocomplete="off">
 			<p>
 				<label for="URI">URI :</label>
-				<input type="text" name="URI" id="IdURI" placeholder="" size="30" maxlength="20">
+				<input type="text" name="URI" id="URI" placeholder="" size="30" maxlength="20">
 			</p>
 			<p>
 				<label for="Commentaire">Ajoutez commentaire</label><br>
@@ -48,8 +59,17 @@
 		<h1>Acceder à toutes les annotations</h1>
 
 		<form autocomplete="off">
-				<button onclick="recup_annotations()" type="button">Envoyer</button>
+			<button onclick="recup_annotations()" type="button">Envoyer</button>
+		</form>
+
+		<h1>Acceder à toutes les annotations d'une ressource</h1>
+
+		<form autocomplete="off">
+			<p>
+				<label for="IdURI_get_all">URI :</label>
+				<input type="text" name="IdURI_get_all" id="IdURI_get_all" placeholder="" size="30" maxlength="20">
 			</p>
+			<button onclick="recup_annotations_uri()" type="button">Envoyer</button>
 		</form>
 
 	</body>
