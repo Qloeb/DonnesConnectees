@@ -5,12 +5,14 @@
         <link rel="shortcut icon" href="#">
 		<title> Titre </title>
 		<script>
+
+			var path = "https://donnesconnectees.onrender.com";
 			
 			function envoi(){
 				var body = {"URI":document.getElementById('URI').value, 
 							"Commentaire":document.getElementById('IdCommentaire').value};
 
-				var route = "/annotation";
+				var route = path+"/annotation";
 				fetch(route, {    method:'POST', 
 								  body: JSON.stringify(body),
 								  headers:{'Content-Type': 'application/json'}
@@ -22,11 +24,11 @@
 			};
 
 			function recup_annotations(){
-				var route = "/recup_annotations"
+				var route = path+"/recup_annotations"
 				fetch(route, {	method: 'GET',})
 					.then(response => response.json())
 					.then(data => {
-						console.log(document.getElementById('format_all').value);
+						
 						if (document.getElementById('format_all').value == "html"){
 							const newPage = window.open();
 							newPage.document.write(`<h1>Réponse de la requête :</h1><p>${JSON.stringify(data)}</p>`);
@@ -41,13 +43,12 @@
 				
 				var uri = document.getElementById('IdURI_get_all').value;
 
-				var route = "/recup_annotations_uri?uri="+uri.toString();
-				console.log(route);
+				var route = path+"/recup_annotations_uri?uri="+uri.toString();
 				
 				fetch(route, {method:'GET'})
 					.then(response => response.json())
 					.then(data => {
-						console.log(document.getElementById('format_all_uri').value);
+						
 						if (document.getElementById('format_all_uri').value == "html"){
 							const newPage = window.open();
 							newPage.document.write(`<h1>Réponse de la requête :</h1><p>${JSON.stringify(data)}</p>`);
@@ -64,7 +65,7 @@
 				var uri = document.getElementById('IdURI_get_one').value;
 				var id = document.getElementById('id_annotation').value;
 	
-				var route = "/recup_annotation_uri_id?uri="+uri.toString();
+				var route = path+"/recup_annotation_uri_id?uri="+uri.toString();
 				route += "&id="+id.toString();
 				console.log(route);
 				
