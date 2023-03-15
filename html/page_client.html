@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
         <link rel="shortcut icon" href="#">
-		<title> Titre </title>
+		<title> TP Données connectées </title>
 		<script>
 
 			var path = "https://donnesconnectees.onrender.com";
@@ -15,7 +15,8 @@
 				var route = path+"/annotation";
 				fetch(route, {    method:'POST', 
 								  body: JSON.stringify(body),
-								  headers:{'Content-Type': 'application/json'}
+								  headers:{'Content-Type': 'application/json'},
+								  mode:'cors'
 							}).then(
 					function(res){ 
 						window.location.reload();
