@@ -67,7 +67,6 @@
 	
 				var route = path+"/recup_annotation_uri_id?uri="+uri.toString();
 				route += "&id="+id.toString();
-				console.log(route);
 				
 				fetch(route, {method:'GET'})
 					.then(response => response.json())

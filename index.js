@@ -43,10 +43,10 @@ app.get("/recup_annotation_uri_id", function(req, res){
 	var id = req.query.id;
 
 	tab_annot = [];
-	
+
 	for (idx in data){
 		if (data[idx]["URI"] == uri && idx == id){
-			console.log(data[id]);
+
 			tab_annot.push(data[id]);
 
 		}
