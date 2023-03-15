@@ -15,13 +15,14 @@ app.post("/annotation", function(req, res){
 	var body = req.body;
 	console.log(body);
 	data.push(body);
-	// console.log(data);
+	console.log(data);
 	res.send();
 });
 
-app.get("/toto", function(req, res){
-	res.send("salut toto!");
- });
+app.get("/recup_annotations", function(req, res){
+		res.send(data);
+});
+	
 
 app.listen(port, function(){
 	console.log('serveur listening on port : '+port);

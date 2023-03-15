@@ -9,25 +9,28 @@
 			function envoi(){
 				var body = {"URI":document.getElementById('IdURI').value, 
 							"Commentaire":document.getElementById('IdCommentaire').value};
-				// console.log(body); 
-				//var route = "http://localhost:3000/annotation";
+
 				var route = "/annotation";
 				fetch(route, {    method:'POST', 
 								  body: JSON.stringify(body),
-								  headers:{'Content-Type': 'application/json'},
-								  //mode:"cors", 
+								  headers:{'Content-Type': 'application/json'}
 							}).then(
 					function(res){ 
 						window.location.reload();
 						console.log(body); 
 					});
-			}
-		
+			};
+
+			function recup_annotations(){
+				var route = "/recup_annotations"
+				fetch(route, {	method: 'GET',});
+			};
 		
 		</script>
 	</head>
 	<body>
 
+        <h1>Enregistrer une annotation</h1>
 		<form autocomplete="off">
 			<p>
 				<label for="URI">URI :</label>
@@ -39,6 +42,13 @@
 			</p>
 			<p> 
 				<button onclick="envoi()" type="button">Envoyer</button>
+			</p>
+		</form>
+
+		<h1>Acceder à toutes les annotations</h1>
+
+		<form autocomplete="off">
+				<button onclick="recup_annotations()" type="button">Envoyer</button>
 			</p>
 		</form>
 
