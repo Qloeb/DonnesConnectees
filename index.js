@@ -38,6 +38,23 @@ app.get("/recup_annotations_uri", function(req, res){
 	console.log(tab_annot);
 	res.send(tab_annot);
 });
+
+app.get("/recup_annotation_uri_id", function(req, res){
+	var uri = req.query.uri;
+	var id = req.query.id;
+	console.log(uri);
+	console.log(id);
+	tab_annot = [];
+	for (idx in data){
+		if (data[idx]["URI"] == uri && idx == id){
+			console.log(data[id]);
+			res.send(data[id]);
+
+		}
+	}
+	res.send("Aucun élément correspondant");
+
+});
 	
 
 app.listen(port, function(){

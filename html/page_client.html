@@ -36,6 +36,18 @@
 				fetch(route, {method:'GET'})
 			};
 
+			function recup_une_annotation(){
+				
+				var uri = document.getElementById('IdURI_get_one').value;
+				var id = document.getElementById('id_annotation').value;
+	
+				var route = "/recup_annotation_uri_id?uri="+uri.toString();
+				route += "&id="+id.toString();
+				console.log(route);
+				
+				fetch(route, {method:'GET'});
+			};
+
 		
 		</script>
 	</head>
@@ -70,6 +82,21 @@
 				<input type="text" name="IdURI_get_all" id="IdURI_get_all" placeholder="" size="30" maxlength="20">
 			</p>
 			<button onclick="recup_annotations_uri()" type="button">Envoyer</button>
+		</form>
+
+		<h1>Acceder à une annotation d'une ressource</h1>
+
+		<form autocomplete="off">
+			<p>
+				<label for="IdURI_get_one">URI Ressource :</label>
+				<input type="text" name="IdURI_get_one" id="IdURI_get_one" placeholder="" size="30" maxlength="20">
+			</p>
+
+			<p>
+				<label for="id_annotation">ID Annotation :</label>
+				<input type="text" name="id_annotation" id="id_annotation" placeholder="" size="30" maxlength="20">
+			</p>
+			<button onclick="recup_une_annotation()" type="button">Envoyer</button>
 		</form>
 
 	</body>
