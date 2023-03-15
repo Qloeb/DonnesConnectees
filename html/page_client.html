@@ -23,7 +23,18 @@
 
 			function recup_annotations(){
 				var route = "/recup_annotations"
-				fetch(route, {	method: 'GET',});
+				fetch(route, {	method: 'GET',})
+					.then(response => response.json())
+					.then(data => {
+						console.log(document.getElementById('format_all').value);
+						if (document.getElementById('format_all').value == "html"){
+							const newPage = window.open();
+							newPage.document.write(`<h1>Réponse de la requête :</h1><p>${JSON.stringify(data)}</p>`);
+						}
+						else{
+							console.log(data);
+						}
+				});
 			};
 
 			function recup_annotations_uri(){
@@ -34,6 +45,18 @@
 				console.log(route);
 				
 				fetch(route, {method:'GET'})
+					.then(response => response.json())
+					.then(data => {
+						console.log(document.getElementById('format_all_uri').value);
+						if (document.getElementById('format_all_uri').value == "html"){
+							const newPage = window.open();
+							newPage.document.write(`<h1>Réponse de la requête :</h1><p>${JSON.stringify(data)}</p>`);
+						}
+						else{
+							console.log(data);
+						}
+						
+					});
 			};
 
 			function recup_une_annotation(){
@@ -45,7 +68,18 @@
 				route += "&id="+id.toString();
 				console.log(route);
 				
-				fetch(route, {method:'GET'});
+				fetch(route, {method:'GET'})
+					.then(response => response.json())
+					.then(data => {
+						console.log(document.getElementById('format_one').value);
+						if (document.getElementById('format_one').value == "html"){
+							const newPage = window.open();
+							newPage.document.write(`<h1>Réponse de la requête :</h1><p>${JSON.stringify(data)}</p>`);
+						}
+						else{
+							console.log(data);
+						}
+					});
 			};
 
 		
@@ -68,11 +102,17 @@
 			</p>
 		</form>
 
+
 		<h1>Acceder à toutes les annotations</h1>
 
 		<form autocomplete="off">
+			<select name="format_all" id="format_all">
+				<option value="json">json</option>
+				<option value="html">html</option>
+			</select>
 			<button onclick="recup_annotations()" type="button">Envoyer</button>
 		</form>
+
 
 		<h1>Acceder à toutes les annotations d'une ressource</h1>
 
@@ -81,8 +121,13 @@
 				<label for="IdURI_get_all">URI :</label>
 				<input type="text" name="IdURI_get_all" id="IdURI_get_all" placeholder="" size="30" maxlength="20">
 			</p>
+			<select name="format_all_uri" id="format_all_uri">
+				<option value="json">json</option>
+				<option value="html">html</option>
+			</select>
 			<button onclick="recup_annotations_uri()" type="button">Envoyer</button>
 		</form>
+
 
 		<h1>Acceder à une annotation d'une ressource</h1>
 
@@ -96,6 +141,11 @@
 				<label for="id_annotation">ID Annotation :</label>
 				<input type="text" name="id_annotation" id="id_annotation" placeholder="" size="30" maxlength="20">
 			</p>
+
+			<select name="format_one" id="format_one">
+				<option value="json">json</option>
+				<option value="html">html</option>
+			</select>
 			<button onclick="recup_une_annotation()" type="button">Envoyer</button>
 		</form>
 

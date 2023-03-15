@@ -48,11 +48,11 @@ app.get("/recup_annotation_uri_id", function(req, res){
 	for (idx in data){
 		if (data[idx]["URI"] == uri && idx == id){
 			console.log(data[id]);
-			res.send(data[id]);
+			tab_annot.push(data[id]);
 
 		}
 	}
-	res.send("Aucun élément correspondant");
+	res.send(tab_annot);
 
 });
 	
